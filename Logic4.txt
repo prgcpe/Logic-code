@@ -1,0 +1,324 @@
+1. GCD (Greatest Common Divisor)
+Running
+Enter 2 numbers : 4 8
+GCD = 4
+
+#include <stdio.h>
+int gcd(int, int);
+int main() {
+	int num1, num2;
+	printf("Enter 2 numbers : ");
+	scanf("%d%d", &num1, &num2);
+	printf("GCD = %d\n", gcd(num1, num2));
+	return 0;
+}
+int gcd(int a, int b) {
+	int min, i;
+	min = a < b ? a : b;
+	for(i = min; i >= 1; i--){
+		if(a % i == 0 && b % i == 0)
+			return i;
+	}
+}
+
+#include <stdio.h>
+int gcd(int, int);
+int main() {
+	int num1, num2;
+	printf("Enter 2 numbers : ");
+	scanf("%d%d", &num1, &num2);
+	printf("GCD = %d\n", gcd(num1, num2));
+	return 0;
+}
+int gcd(int a, int b) {
+	int temp;
+	
+	while(a % b != 0){
+		temp = a;
+		a = b;
+		b = temp % b;
+	}
+	return b;
+}
+************************************************************************
+2. LCM (Leasr Common multiplier)
+Running
+Enter 2 numbers : 4 8
+LCM = 8
+
+#include <stdio.h>
+int gcd(int, int);
+int lcm(int, int);
+int main() {
+	int num1, num2;
+	printf("Enter 2 numbers : ");
+	scanf("%d%d", &num1, &num2);
+	printf("GCD = %d\n", gcd(num1, num2));
+	printf("LCM = %d\n", lcm(num1, num2));
+	return 0;
+}
+int gcd(int a, int b) {
+	int temp;
+	
+	while(a % b != 0){
+		temp = a;
+		a = b;
+		b = temp % b;
+	}
+	return b;
+}
+int lcm(int a, int b) {
+	return a*b/gcd(a, b);
+}
+************************************************************************
+3. print all factors of a number
+Running
+Enter a number : 12
+1 2 3 4 6 12
+
+#include <stdio.h>
+void factor(int);
+int main() {
+	int num;
+	printf("Enter a number : ");
+	scanf("%d", &num);
+	factor(num);
+	return 0;
+}
+void factor(int n) {
+	int i;
+	for(i = 1; i <= n; i++){
+		if(n % i == 0){
+			printf("%d ", i);
+		}
+	}
+}
+************************************************************************
+4. print prime factor
+
+#include <stdio.h>
+void primeFactor(int);
+int main() {
+	int num;
+	printf("Enter a number : ");
+	scanf("%d", &num);
+	primeFactor(num);
+	return 0;
+}
+void primeFactor(int n) {
+	int i, status = 0;
+	while(n > 1) {
+		for(i = 2; i <= n; i++) {
+			if(n % i == 0) {
+				printf(!status ? "%d": "x%d", i);
+				status =1;
+				n = n / i;
+				break;
+			}
+		}
+	}
+}
+************************************************************************
+5. print fill square
+Running
+Enter a number : 4
+****
+****
+****
+****
+
+#include <stdio.h>
+void block(int);
+int main() {
+	int num;
+	printf("Enter a number : ");
+	scanf("%d", &num);
+	block(num);
+	return 0;
+}
+void block(int n) {
+	int i, j;
+	for(i = 1; i <= n; i++) {
+		for(j = 1; j <= n; j++) {
+			printf("*");
+		}
+		printf("\n");
+	}
+}
+************************************************************************
+6. print hollow square
+Running
+Enter a number : 4
+****
+*  *
+*  *
+****
+
+#include <stdio.h>
+void printSquare(int);
+int main() {
+	int num;
+	printf("Enter a number : ");
+	scanf("%d", &num);
+	printSquare(num);
+	return 0;
+}
+void printSquare(int n) {
+	int i, j;
+	for(i = 1; i <= n; i++) {
+		for(j = 1; j <= n; j++) {
+			if(i == 1 || i == n || j == 1 || j == n)
+				printf("*");
+			else
+				printf(" ");
+		}
+		printf("\n");
+	}
+}
+************************************************************************
+7. print special square
+Running
+Enter a number : 4
+O--O
+|xx|
+|xx|
+O--O
+
+#include <stdio.h>
+void specialBlock(int);
+int main() {
+	int num;
+	printf("Enter a number : ");
+	scanf("%d", &num);
+	specialBlock(num);
+	return 0;
+}
+void specialBlock(int n) {
+	int i, j;
+	for(i = 1; i <= n; i++) {
+		for(j = 1; j <= n; j++) {
+			if((i == 1 && j ==1) || (i == 1 && j == n) || (i == n && j == 1) || (i == n && j ==n))
+				printf("O");
+			else if (i == 1 || i == n)
+				printf("-");
+			else if (j == 1 || j == n)
+				printf("|");
+			else
+				printf("x");
+		}
+		printf("\n");
+	}
+}
+************************************************************************
+8. print X
+Running
+Enter an odd number : 5
+\   /
+ \ /
+  x
+ / \
+/   \
+
+#include <stdio.h>
+void printX(int);
+int main() {
+	int num;
+	printf("Enter a number : ");
+	scanf("%d", &num);
+	printX(num);
+	return 0;
+}
+void printX(int n) {
+	int i, j;
+	for(i = 1; i <= n; i++) {
+		for(j = 1; j <= n; j++) {
+			if(i == n/2 + 1 && j == n/2 + 1)
+				printf("X");
+			else if (i == j)
+				printf("\\");
+			else if (i + j == n + 1)
+				printf("/");
+			else
+				printf(" ");
+		}
+		printf("\n");
+	}
+}
+************************************************************************
+9. print Y
+Running
+Enter an odd number : 5
+\   /
+ \ /
+  V
+  |
+  |
+
+#include <stdio.h>
+void printY(int);
+int main() {
+	int num;
+	printf("Enter an odd number : ");
+	scanf("%d", &num);
+	printY(num);
+	return 0;
+}
+void printY(int n) {
+	int i, j;
+	for(i = 1; i <= n; i++) {
+		for(j = 1; j <= n; j++) {
+			if(i > n/2 +1 && j == n/2 +1)
+				printf("|");
+			else if(i == n/2 + 1 && j == n/2 + 1)
+				printf("V");
+			else if (i == j && i <= n/2 +1)
+				printf("\\");
+			else if ((i + j == n + 1) && i <= n/2 +1)
+				printf("/");
+			else
+				printf(" ");
+		}
+		printf("\n");
+	}
+}
+************************************************************************
+10
+ print Asterisk
+Running
+Enter an odd number : 5
+\ | /
+ \|/
+--X--
+ /|\
+/ | \
+
+#include <stdio.h>
+void asterisk(int);
+int main() {
+	int num;
+	printf("Enter an odd number : ");
+	scanf("%d", &num);
+	asterisk(num);
+	return 0;
+}
+void asterisk(int n) {
+	int i, j;
+	for(i = 1; i <= n; i++) {
+		for(j = 1; j <= n; j++) {
+			if(i == n/2 + 1 && j == n/2 + 1)
+				printf("X");
+			else if(j == n/2 +1)
+				printf("|");
+			else if(i == n/2 + 1)
+				printf("-");
+			else if (i == j)
+				printf("\\");
+			else if (i + j == n + 1)
+				printf("/");
+			else
+				printf(" ");
+		}
+		printf("\n");
+	}
+}
+************************************************************************

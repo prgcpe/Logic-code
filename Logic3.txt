@@ -1,0 +1,230 @@
+1. print reverse
+Running
+Enter a number : 12345
+5 4 3 2 1
+
+12345	=>	5 4 3 2 1
+
+387	=>	7 8 3
+
+987654321	=>	1 2 3 4 5 6 7 8 9
+
+#include <stdio.h>
+int main(){
+	int num;
+	printf("Enter a number : ");
+	scanf("%d", &num);
+	while(num > 0){
+		printf("%d ", num % 10);
+		num /= 10;	
+	}
+	return 0;
+}
+***************************************************************************
+2. find majority
+Running
+Enter a number : 3377
+odd majority
+
+3377	=>	odd majority
+12354	=>	odd majority
+5663	=>	no majority
+49	=>	no majority
+445642	=>	even majority
+386	=>	even majority
+
+#include <stdio.h>
+int main(){
+	int num, odd = 0, even = 0, d;
+	printf("Enter a number : ");
+	scanf("%d", &num);
+	while(num > 0){
+		d = num % 10;
+		if(d % 2 == 0)
+			even++;
+		else
+			odd++;
+		num /= 10;
+	}
+	if(even > odd)
+		printf("even majority\n");
+	else if(odd > even)
+		printf("odd majority\n");
+	else
+		printf("no majority\n");
+	return 0;
+}
+***************************************************************************
+3. count digit
+Running
+Enter a number : 123
+3 digits
+
+123	=>	3 digits
+8	=>	1 digit
+18	=>	2 digits
+1234567	=>	7 digits
+
+#include <stdio.h>
+int countDigit(int);
+int main(){
+	int num, digit;
+	printf("Enter a number : ");
+	scanf("%d", &num);
+	digit = countDigit(num);
+	printf("%d %s", digit, digit == 1 ? "digit" : "digits");
+	return 0;
+}
+int countDigit(int n){
+	int count = 0;
+	while(n > 0){
+		count++;
+		n /= 10;
+	}
+	return count;
+}
+***************************************************************************
+4. reverse number
+Running
+Enter a nuber : 123
+321 + 1 = 322
+
+123	=>	321 + 1 = 322
+8	=>	8 + 1 = 9
+13	=>	81 + 1 = 82
+1234567	=>	7654321 + 1 = 7654322
+
+
+***************************************************************************
+5. find palindrome
+Running
+Enter a number : 121
+palindrome
+
+121	=>	palindrome
+33	=>	palindrome
+1338331	=>	palindrome
+8337	=>	not palindrome
+89	=>	not palindrome
+808	=>	palindrome
+
+#include <stdio.h>
+int reverse(int);
+int main(){
+	int num, rev;
+	printf("Enter a number : ");
+	scanf("%d", &num);
+	rev = reverse(num);
+	printf(rev == num ? "palindrome" : "not palindrome");
+	return 0;
+}
+int reverse(int n){
+	int rev = 0;
+	while(n > 0){
+		rev = rev * 10 + n % 10;
+		n /= 10;
+	}
+	return rev;
+}
+
+***************************************************************************
+6. replace 0 with 9
+Running
+Enter a number : 79001
+79991
+
+#include <stdio.h>
+int replace0with9(int);
+int main(){
+	int num;
+	printf("Enter a number : ");
+	scanf("%d", &num);
+	printf("%d", replace0with9(num));
+	return 0;
+}
+int replace0with9(int n){
+	int sum = 0, d, base = 1;
+	while(n > 0){
+		d = n % 10;
+		d = d == 0 ? 9 : d;
+		sum = sum + base * d;
+		base *= 10;
+		n /= 10;
+	}
+	return sum;
+}
+***************************************************************************
+7. binary to decimal
+Running
+Enter a binary number : 10
+2
+
+#include <stdio.h>
+int toDecimal(int);
+int main(){
+	int num;
+	printf("Enter a binary number : ");
+	scanf("%d", &num);
+	printf("%d", toDecimal(num));
+	return 0;
+}
+int toDecimal(int n){
+	int sum = 0, d, base = 1;
+	while(n > 0){
+		d = n % 10;
+		sum = sum + base * d;
+		base *= 2;
+		n /= 10;
+	}
+	return sum;
+}
+***************************************************************************
+8. decimal to binary
+Running
+Enter a decimal number : 2
+10
+
+#include <stdio.h>
+int toBinary(int);
+int main(){
+	int num;
+	printf("Enter a decimal number : ");
+	scanf("%d", &num);
+	printf("%d", toBinary(num));
+	return 0;
+}
+int toBinary(int n){
+	int sum = 0, d, weight = 1;
+	while(n > 0){
+		d = n % 2;
+		sum = sum + weight * d;
+		weight *= 10;
+		n /= 2;
+	}
+	return sum;
+}
+***************************************************************************
+9. find 13 in a number
+Running
+Enter a number : 13
+YES
+
+#include <stdio.h>
+int find13(int);
+int main(){
+	int num;
+	printf("Enter a decimal number : ");
+	scanf("%d", &num);
+	printf(find13(num) ? "YES" : "NO");
+	return 0;
+}
+int find13(int n){
+	int d, sum = 0;
+	while(n > 0){
+		if(n % 100 == 13)
+			return 1;
+		n /= 10;	
+	}
+	return 0;
+}
+***************************************************************************

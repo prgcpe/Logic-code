@@ -1,0 +1,259 @@
+1.find min, max, mid
+Running
+Enter 3 numbers : 3 8 6
+min = 3 mid = 6 max = 8
+
+3 8 6 => min = 3 mid = 6 max = 8
+3 6 8 => min = 3 mid = 6 max = 8
+6 3 8 => min = 3 mid = 6 max = 8
+6 8 3 => min = 3 mid = 6 max = 8
+8 3 6 => min = 3 mid = 6 max = 8
+8 6 3 => min = 3 mid = 6 max = 8
+
+#include <stdio.h>
+int main() {
+	int n1, n2, n3;
+	int min, max, mid;
+	printf("Enter 3 numbers : ");
+	scanf("%d%d%d", &n1, &n2, &n3);
+	max = n1 > n2 ? n1 : n2;
+	max = max > n3 ? max : n3;
+	min = n1 < n2 ? n1 : n2;
+	min = min < n3 ? min : n3;
+	mid = (n1 + n2 + n3) - max - min;
+	printf("min = %d mid = %d max = %d\n", min, mid, max);
+	return 0;
+}
+******************************************************************************************
+2.pronounce number
+Running
+Enter a number <1-99> : 3
+three
+
+-2 => not in the range
+100 => not in the range
+3 => three
+9 => nine
+12 => twelve
+15 => fifteen
+28 => twenty eight
+40 => forty
+51 => fifty one
+66 => sixty six
+77 => seventy seven
+83 => eighty three
+99 => ninety nine
+
+#include <stdio.h>
+int main() {
+	int num, n1, n2;
+	printf("Enter a number <1-99> : ");
+	scanf("%d", &num);
+	n1 = num / 10;
+	n2 = num % 10;
+	
+	if(!(num < 1 || num > 99)){
+		if(n1 == 1) {
+			switch(n2) {
+				case 0 : printf("ten\n");break;
+				case 1 : printf("eleven\n");break;
+				case 2 : printf("twelve\n");break;
+				case 3 : printf("thirteen\n");break;
+				case 4 : printf("fourteen\n");break;
+				case 5 : printf("fifteen\n");break;
+				case 6 : printf("sixteen\n");break;
+				case 7 : printf("seventeen\n");break;
+				case 8 : printf("eighteen\n");break;
+				case 9 : printf("nineteen\n");break;
+			}
+			
+		}
+		else if(n1 == 0) {
+			switch(n2) {
+				case 1 : printf("one\n");break;
+				case 2 : printf("two\n");break;
+				case 3 : printf("three\n");break;
+				case 4 : printf("four\n");break;
+				case 5 : printf("five\n");break;
+				case 6 : printf("six\n");break;
+				case 7 : printf("seven\n");break;
+				case 8 : printf("eight\n");break;
+				case 9 : printf("nine\n");break; 
+			}
+		}
+		else {
+			switch(n1){
+				case 2 : printf("twenty ");break;
+				case 3 : printf("thirty ");break;
+				case 4 : printf("forty ");break;
+				case 5 : printf("fifty ");break;
+				case 6 : printf("sixty ");break;
+				case 7 : printf("seventy ");break;
+				case 8 : printf("eighty ");break;
+				case 9 : printf("ninety ");break; 
+			}
+			switch(n2) {
+				case 1 : printf("one\n");break;
+				case 2 : printf("two\n");break;
+				case 3 : printf("three\n");break;
+				case 4 : printf("four\n");break;
+				case 5 : printf("five\n");break;
+				case 6 : printf("six\n");break;
+				case 7 : printf("seven\n");break;
+				case 8 : printf("eight\n");break;
+				case 9 : printf("nine\n");break; 
+			}
+			
+		}
+	}
+	else
+		printf("not int the range\n");
+	return 0;
+}
+******************************************************************************************
+3.print forward and backward
+Running
+Enter a positive number : 10
+1 2 3 4 5 6 7 8 9 10
+10 9 8 7 6 5 4 3 2 1
+
+10 => 1 2 3 4 5 6 7 8 9 10
+      10 9 8 7 6 5 4 3 2 1
+
+5 => 1 2 3 4 5
+     5 4 3 2 1
+
+1 => 1
+     1
+
+#include <stdio.h>
+int main() {
+	int num, i;
+	printf("Enter a positive number : ");
+	scanf("%d", &num);
+	for(i = 1; i <= num; i++)
+		printf(i == num ? "%d\n" : "%d ", i);
+	for(i = num; i >= 1; i--)
+		printf("%d ", i);
+	return 0;
+}
+******************************************************************************************
+4.sum
+Enter a positive number : 10
+1 3 6 10 15 21 28 36 45 55
+
+10 => 1 3 6 10 15 21 28 36 45 55
+
+5 => 1 3 6 10 15
+
+1 => 1
+
+#include <stdio.h>
+int main() {
+	int num, i, sum = 0;
+	printf("Enter a positive number : ");
+	scanf("%d", &num);
+	for(i = 1; i <= num; i++){
+		sum += i;
+		printf("%d ", sum); 
+	}
+	return 0;
+}
+******************************************************************************************
+5.find factorial
+Running
+Enter a whole number : 3
+3! = 6
+
+3 => 3! = 6
+0 => 0! = 1
+5 => 5! = 120
+
+#include <stdio.h>
+int main() {
+	int num, i, fac = 1;
+	printf("Enter a whole number : ");
+	scanf("%d", &num);
+	for(i = 1; i <= num; i++)
+		fac *= i; 
+	
+	printf("%d! = %d\n", num, fac);
+	return 0;
+}
+******************************************************************************************
+6.count the number of positive factorial int the range
+Running
+Enter the first number : 5
+Enter the second number : 130
+3
+
+5
+130 => 3
+
+1
+24 => 4
+
+6
+1000000 => 7
+
+#include <stdio.h>
+int main() {
+	int num1, num2, i, fac = 1, count = 0;
+	printf("Enter the first number : ");
+	scanf("%d", &num1);
+	printf("Enter the second number : ");
+	scanf("%d", &num2);
+	for(i = 1; fac <= num2; i++){
+		fac *= i;
+		if(fac >= num1 && fac <= num2)
+			count++; 
+	}
+	printf("%d", count);
+	return 0;
+}
+******************************************************************************************
+7.print alphabet
+Running
+Enter an uppercase alphabet : A
+Enter a number : 10
+A B C D E F G H I J
+
+A
+10	=> A B C D E F G H I J
+
+M
+5	=> M N O P Q
+
+#include <stdio.h>
+int main() {
+	char ch;
+	int num, i;
+	printf("Enter an uppercase alphabet : ");
+	scanf(" %c", &ch);
+	printf("Enter a number : ");
+	scanf("%d", &num);
+	for(i = 0; i < num; i++){
+		printf("%c ", ch++);
+		if(ch > 'Z')
+			break;
+	}
+	return 0;
+}
+
+#include <stdio.h>
+int main() {
+	char ch;
+	int num, i;
+	printf("Enter an uppercase alphabet : ");
+	scanf(" %c", &ch);
+	printf("Enter a number : ");
+	scanf("%d", &num);
+	for(i = 0; i < num; i++){
+		if(ch >= 'A' && ch <= 'Z')
+			printf("%c ", ch++);
+		else
+			break;
+	}
+	return 0;
+}
+******************************************************************************************
