@@ -1,0 +1,230 @@
+﻿1. printArray
+2. printBackward
+3. sumArray
+4. find maximum
+5. find minimum
+6. find second max
+7. find second min
+8. print only odd number
+9. print only even number
+10. print only prime number
+11. print only perfect number
+12. print max product of two numbers
+13. reverse member of array
+14. rotate left
+15. rotate right
+--------------------------------------------------------------------------
+#include <stdio.h>
+#include <math.h>
+void printArray(int[], int);
+void printBackward(int[], int);
+int sumArray(int[], int);
+int findMax(int[], int);
+int findMin(int[], int);
+int secondMax(int[], int);
+int secondMin(int[], int);
+void printOdd(int[], int);
+void printEven(int[], int);
+void printPrime(int[], int);
+int isPrime(int);
+void printPerfectSquare(int[], int);
+int isPerfectSquare(int);
+int max2Product(int[], int);
+int main(){
+	int n[] = {3, 9, 1, 5, 12, 25, 10};
+	int length = sizeof(n)/sizeof(n[0]);
+	printArray(n, length);
+	printBackward(n, length);
+	printf("sum all members = %d\n", sumArray(n, length));
+	printf("maximum = %d\n", findMax(n, length));
+	printf("minimum = %d\n", findMin(n, length));
+	printf("second max = %d\n", secondMax(n, length));
+	printf("second min = %d\n", secondMin(n, length));
+	printOdd(n, length);
+	printEven(n, length);
+	printPrime(n, length);
+	printPerfectSquare(n, length);	
+	printf("max of 2 number = %d\n", max2Product(n, length));
+	return 0;
+}
+void printArray(int a[], int len){
+	int i;
+	for(i = 0; i < len; i++)
+		printf("%d ", a[i]);
+	printf("\n");
+}
+void printBackward(int a[], int len){
+	int i;
+	for(i = len - 1; i >= 0; i--)
+		printf("%d ", a[i]);
+	printf("\n");
+}
+int sumArray(int a[], int len){
+	int sum = 0, i;
+	for(i = 0; i < len; i++)
+		sum += a[i];
+	return sum;
+}
+int findMax(int a[], int len){
+	int i, max = a[0];
+	for(i = 1; i < len; i++)
+		max = a[i] > max ? a[i] : max;
+	return max;
+}
+int findMin(int a[], int len){
+	int i, min = a[0];
+	for(i = 1; i < len; i++)
+		min = a[i] < min ? a[i] : min;
+	return min;
+}
+int secondMax(int a[], int len){
+	int i, max1, max2;
+	max1 = max2 = -99999;
+	for(i = 0; i < len; i++){
+		if(a[i] > max1){
+			max2 = max1;
+			max1 = a[i];
+		}
+		else if(a[i] > max2)
+			max2 = a[i];
+	} 
+}
+int secondMin(int a[], int len){
+	int i, min1, min2;
+	min1 = min2 = 99999;
+	for(i = 0; i < len; i++){
+		if(a[i] < min1){
+			min2 = min1;
+			min1 = a[i];
+		}
+		else if(a[i] > min2)
+			min2 = a[i];
+	} 
+	return max2;
+}
+void printOdd(int a[], int len){
+	int i;
+	for(i = 0; i < len; i++){
+		if(a[i] % 2 == 1)
+			printf("%d ", a[i]);	
+	}
+	printf("\n");
+}
+void printEven(int a[], int len){
+	int i;
+	for(i = 0; i < len; i++){
+		if(a[i] % 2 == 0)
+			printf("%d ", a[i]);	
+	}
+	printf("\n");
+}
+int isPrime(int a){
+	if(a < 2)
+		return 0;
+	if(a == 2)
+		return 1;
+	if(a % 2 == 0 || a % 3 == 0)
+		return 0;
+	for(i = 5; i*i <= a; i+=6){
+		if(a%i == 0 || a%(i+2) == 0)
+			return 0;
+	}
+	return 1;
+}
+void printPrime(int a, int length){
+	int i;
+	for(i = 0; i < len; i++){
+		if(isPrime(a[i]))
+			printf("%d ", a[i]);
+	}
+	printf("\n");
+}
+int isPerfectSquare(int a){
+	int d = sqrt(a);
+	return d*d == a;
+}
+void printPerfectSquare(int a[], int len){
+	int i;
+	for(i = 0; i < len; i++){
+		if(isPerfectSquare(a[i]))
+			printf("%d ", a[i]);
+	}
+	printf("\n");
+}
+int max2Product(int a[], int len){
+	int i, max1, max2;
+	for(i = 0; i < len; i++){
+		if(a[i] < min1){
+			min2 = min1;
+			min1 = a[i];
+		}
+		else if(a[i] > min2)
+			min2 = a[i];
+	} 
+	return max1*max2;
+}
+****************************************************
+#include <stdio.h>
+void printArray(int[], int);
+void reverse(int[], int);
+int main(){
+	int n[] = {3, 9, 1, 5, 12, 25, 10};
+	int length = sizeof(n)/sizeof(n[0]);
+	printArray(n, length);
+	reverse(n, length);
+	printArray(n, length);
+	return 0;
+}
+void printArray(int a[], int len){
+	int i;
+	for(i = 0; i < len; i++)
+		printf("%d ", a[i]);
+	printf("\n");
+}
+void reverse(int a[], int len){
+	int left = 0, right = len - 1, temp;
+	while(left < right){
+		temp = a[left];
+		a[left] = a[right];
+		a[right] = temp;
+		left++;
+		right--;
+	}
+}
+************************************************
+#include <stdio.h>
+void printArray(int[], int);
+void rotateLeft(int[], int, int);
+void rotateRight(int[], int, int);
+int main(){
+	int n[] = {3, 9, 1, 5, 12, 25, 10};
+	int length = sizeof(n)/sizeof(n[0]);
+	printArray(n, length);
+	rotateRight(n, length, 3);
+	printArray(n, length);
+	return 0;
+}
+void printArray(int a[], int len){
+	int i;
+	for(i = 0; i < len; i++)
+		printf("%d ", a[i]);
+	printf("\n");
+}
+void rotateLeft(int a[], int len, int k){
+	int i, j, temp;
+	for(i = 1; i <= k; i++){
+		temp = a[0];
+		for(j = 1; j < len; j++)
+			a[j-1] = a[j];
+		a[len-1] = temp;
+	}	
+}
+void rotateRight(int a[], int len, int k){
+	int i, j, temp;
+	for(i = 1; i <= k; i++){
+		temp = a[len-1];
+		for(j == len - 2; j >= 0; j--)
+			a[j+1] = a[j];
+		a[0] = temp;
+	}
+}
