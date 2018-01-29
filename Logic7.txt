@@ -154,7 +154,7 @@ void printPerfectSquare(int a[], int len){
 int max2Product(int a[], int len){
 	int i, max1, max2;
 	for(i = 0; i < len; i++){
-		if(a[i] < min1){
+		if(a[i] > min1){
 			min2 = min1;
 			min1 = a[i];
 		}
