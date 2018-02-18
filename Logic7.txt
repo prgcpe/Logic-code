@@ -97,7 +97,7 @@ int secondMin(int a[], int len){
 			min2 = min1;
 			min1 = a[i];
 		}
-		else if(a[i] > min2)
+		else if(a[i] < min2)
 			min2 = a[i];
 	} 
 	return max2;
